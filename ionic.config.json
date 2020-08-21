@@ -1,0 +1,7 @@
+{
+  "name": "quileia",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
