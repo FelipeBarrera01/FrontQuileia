@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Conexiones de red</ion-title>
+    <ion-button color="primary" slot="end" (click)="getConexion()">Actualizar</ion-button>
+    <ion-button color="primary" slot="end" [routerLink]="['/common-con']">Insertar</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-chip color="secondary" *ngIf="conexiones == null">
+  <ion-label>Sin conexiones</ion-label>
+</ion-chip>
+
+<ion-content *ngIf="conexiones != null">
+  <ion-card  *ngFor="let dis of conexiones">
+    <ion-card-header>
+      <ion-card-title>Nombre: {{dis.nombre}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+     <p>Tipo: <span *ngIf="dis.tipo == 1">Wifi</span> <span *ngIf="dis.tipo == 2">Lan</span></p>
+     <p>tipo de cifrado: {{dis.tipoCifrado}}</p>
+     <p>Usuario: {{dis.usuario}}</p>
+     <p>Clave: {{dis.clave}}</p>
+     <ion-button color="secondary" [routerLink]="['/common-con', dis.id]">Editar</ion-button>
+     <ion-button color="danger" (click)="eliminarConexion(dis.id)">Eliminar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

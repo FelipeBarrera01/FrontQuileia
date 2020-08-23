@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dispositivos</ion-title>
+    <ion-button color="primary" slot="end" (click)="getDispositivo()">Actualizar</ion-button>
+    <ion-button color="primary" slot="end" [routerLink]="['/common']">Insertar</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-chip color="secondary" *ngIf="dispositivos == null">
+  <ion-label>Sin dispositivos</ion-label>
+</ion-chip>
+
+<ion-content *ngIf="dispositivos != null">
+  <ion-card  *ngFor="let dis of dispositivos">
+    <ion-card-header>
+      <ion-card-subtitle>Mac: {{dis.mac}}</ion-card-subtitle>
+      <ion-card-title>Tipo: {{dis.tipo}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+     <p>Conectado: <span *ngIf="dis.conected">SI</span> <span *ngIf="!dis.conected">NO</span></p>
+     <p>Conexion actual: <span *ngIf="dis.conexionActual == null">Ninguno</span><span *ngIf="dis.conexionActual != null">{{dis.conexionActual.nombre}}</span></p>
+     <p>IP asignada: {{dis.ip}}</p>
+     <ion-button color="secondary" [routerLink]="['/common', dis.id]">Editar</ion-button>
+     <ion-button color="danger" (click)="eliminarDispositivo(dis.id)">Eliminar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

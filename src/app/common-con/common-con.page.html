@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{accion}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-input [(ngModel)]="conexion.nombre"></ion-input>
+    </ion-item>
+    <ion-list>
+      
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="elegirTipo($event)" [(ngModel)]="red">
+          <ion-select-option value="Wifi">Wifi</ion-select-option>
+          <ion-select-option value="Lan">Lan</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+    </ion-list>
+    <ion-list *ngIf="red == 'Wifi'">
+      
+      <ion-item>
+        <ion-label>Cifrado Wifi</ion-label>
+        <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="elegirTipoCifrado($event)" [(ngModel)]="conexion.tipoCifrado">
+          <ion-select-option value="WEP">WEP</ion-select-option>
+          <ion-select-option value="WPA">WPA</ion-select-option>
+          <ion-select-option value="WPA2">WPA2</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+    </ion-list>
+    <ion-list *ngIf="red == 'Lan'">
+      
+      <ion-item>
+        <ion-label>Cifrado Lan</ion-label>
+        <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="elegirTipoCifrado($event)" [(ngModel)]="conexion.tipoCifrado">
+          <ion-select-option value="TKIP">TKIP</ion-select-option>
+          <ion-select-option value="PSK">PSK</ion-select-option>
+          <ion-select-option value="EAP">EAP</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+    </ion-list>
+    <ion-item>
+      <ion-label>Usuario:</ion-label>
+      <ion-input [(ngModel)]="conexion.usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Clave:</ion-label>
+      <ion-input [(ngModel)]="conexion.clave"></ion-input>
+    </ion-item>
+    <ion-button color="success" (click)="guardarConexion()">Guardar</ion-button>
+  </ion-card>
+  <ion-label>{{respuesta}}</ion-label>
+</ion-content>

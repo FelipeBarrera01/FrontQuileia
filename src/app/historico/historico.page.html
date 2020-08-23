@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>historico</ion-title>
+    <ion-button color="primary" slot="end" (click)="getHistoricos()">Actualizar</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Nombre de conexion</ion-label>
+    <ion-input (ionChange)="filtroCon($event)" [(ngModel)]="termRed"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Mac de dispositivo</ion-label>
+    <ion-input (ionChange)="filtroMac($event)" [(ngModel)]="termMac"></ion-input>
+  </ion-item>
+  <ion-card *ngFor="let his of historicos">
+    
+    <ion-item>
+      <ion-label>Nombre de red: {{his.nombreConRed}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tipo de cifrado: {{his.tipoCifradoConRed}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tipo de red: {{his.tipoConRed}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mac de dispositivo: {{his.macDispositivo}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tipo de dispositivo: {{his.tipoDispositivo}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ip de dispositivo: {{his.ipDispositivo}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Usuario de red: {{his.usuarioConRed}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Clave de red: {{his.claveConRed}}</ion-label>
+    </ion-item>
+    
+  </ion-card>
+</ion-content>

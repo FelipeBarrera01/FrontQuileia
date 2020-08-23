@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{accion}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-list>
+    
+    <ion-item>
+      <ion-label>Tipo</ion-label>
+      <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="elegirTipo($event)" [(ngModel)]="dispositivo.tipo">
+        <ion-select-option *ngFor="let arrDis of arrDispositivo" >{{arrDis}}</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
+  <ion-list>
+    
+    <ion-item>
+      <ion-label>¿Conectado a la red?</ion-label>
+      <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="isconnected($event)" [(ngModel)]="siyno">
+        <ion-select-option value="SI">SI</ion-select-option>
+        <ion-select-option value="NO">NO</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
+  <ion-list *ngIf="isconexion">
+    
+  
+    <ion-item>
+      <ion-label>Conexiones a red</ion-label>
+      <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="elegirRed($event)" [(ngModel)]="nombreConexion" >
+        <ion-select-option *ngFor="let con of conexiones">{{con.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
+  <ion-item>
+    <ion-label>IP:</ion-label>
+    <ion-input [(ngModel)]="dispositivo.ip"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>MAC:</ion-label>
+    <ion-input [(ngModel)]="dispositivo.mac"></ion-input>
+  </ion-item>
+  <ion-button color="success" (click)="guardarDispositivo()">Guardar</ion-button>
+</ion-card>
+<ion-label>
+ {{respuesta}}
+</ion-label>
+</ion-content>
